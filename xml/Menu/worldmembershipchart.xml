@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/admin/worldmembershipchart</path>
+    <page_callback>CRM_WorldMembershipChart_Form_Main</page_callback>
+    <title>World Membership Chart</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
