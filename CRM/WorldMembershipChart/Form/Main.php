@@ -79,12 +79,16 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
       $membership = civicrm_api3('Membership', 'get', [
         'sequential' => 1,
         'membership_type_id' => ['IN' => $it],
+        'status_id' => ['IN' => ["New", "Current"]],
+        'contact_id.is_deleted' => 0,
         'options' => ['limit' => 0],
         'return' => ["contact_id"],
       ]);
     } else {
       $membership = civicrm_api3('Membership', 'get', [
         'sequential' => 1,
+        'status_id' => ['IN' => ["New", "Current"]],
+        'contact_id.is_deleted' => 0,
         'options' => ['limit' => 0],
         'return' => ["contact_id"],
       ]);
