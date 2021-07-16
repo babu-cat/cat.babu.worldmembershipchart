@@ -35,7 +35,7 @@
         </td>
         <td>
           {$form.color_max.html|crmAddClass:'huge'}<br />
-          <span class="description">{ts domain="cat.babu.worldmembershipchart"}By default: #D9251D.{/ts}</span>
+          <span class="description">{ts domain="cat.babu.worldmembershipchart"}By default: #D52027.{/ts}</span>
         </td>
       </tr>
       <tr class="crm-Main-form-block-division_num">

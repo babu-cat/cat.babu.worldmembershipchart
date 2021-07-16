@@ -30,7 +30,7 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
       'text',
       'color_max',
       'Color mas oscuro',
-      array('placeholder' => ts('#D9251D'))
+      array('placeholder' => ts('#D52027'))
     );
     $this->add(
       'text',
@@ -99,7 +99,7 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
       'options' => ['limit' => 0],
     ]);
     if(empty($colorMax)) {
-      $colorMax = '#D9251D';
+      $colorMax = '#D52027';
     }
     if(empty($colorMin)) {
       $colorMin = '#F8DAD9';
