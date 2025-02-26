@@ -1,0 +1,6 @@
+{
+    "name": "civicrm/cat.babu.worldmembershipchart",
+    "type": "civicrm-ext",
+    "license": "MIT",
+    "minimum-stability": "stable"
+}
