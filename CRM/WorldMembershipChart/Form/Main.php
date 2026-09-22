@@ -9,16 +9,16 @@ use CRM_WorldMembershipChart_ExtensionUtil as E;
  */
 class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
   public function buildQuickForm() {
-    $language = array();
+    $language = [];
     $language = CRM_Admin_Form_Setting_Localization::getDefaultLocaleOptions();
     $options[CRM_Core_I18n::getLocale()] = $language[CRM_Core_I18n::getLocale()];
     $options = array_merge($options,$language);
-    $this->addEntityRef('membership_type', 'Tipo de Membresia', array(
+    $this->addEntityRef('membership_type', 'Tipo de Membresia', [
       'entity' => 'MembershipType',
       'multiple' => TRUE,
       'placeholder' => ts('- any -'),
-      'select' => array('minimumInputLength' => 0),
-    ));
+      'select' => ['minimumInputLength' => 0],
+    ]);
     $this->add(
       'text',
       'membership_name',
@@ -30,25 +30,25 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
       'text',
       'color_max',
       'Color mas oscuro',
-      array('placeholder' => ts('#D52027'))
+      ['placeholder' => ts('#D52027')]
     );
     $this->add(
       'text',
       'color_min',
       'Color mas claro',
-      array('placeholder' => ts('#F8DAD9'))
+      ['placeholder' => ts('#F8DAD9')]
     );
     $this->add(
       'text',
       'division_num',
       'Cantidad de divisiones',
-      array('placeholder' => ts('5'))
+      ['placeholder' => ts('5')]
     );
     $this->add(
       'text',
       'division_point',
       'Puntos de divisiones',
-      array('placeholder' => ts('50,200,500,1000,10000'))
+      ['placeholder' => ts('50,200,500,1000,10000')]
     );
     $this->add(
       'select',
@@ -56,13 +56,13 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
       'Selecciona el Idioma',
       $options
     );
-    $this->addButtons(array(
-      array(
+    $this->addButtons([
+      [
         'type' => 'submit',
         'name' => E::ts('Get Code'),
         'isDefault' => TRUE,
-      ),
-    ));
+      ],
+    ]);
     parent::buildQuickForm();
   }
 
@@ -74,7 +74,7 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
     $divisionNum=$export['division_num'];
     $divisionPoint=$export['division_point'];
     $idioma=$export['idioma'];
-    $code = array();
+    $code = [];
     if ($export['membership_type']) {
       $membership = civicrm_api3('Membership', 'get', [
         'sequential' => 1,
@@ -108,7 +108,7 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
       $divisionNum = 5;
     }
     if(empty($divisionPoint)) {
-      $divisionPoint = array(50,200,500,1000,10000);
+      $divisionPoint = [50,200,500,1000,10000];
     } else {
       $divisionPoint = explode(',',$divisionPoint);
     }
@@ -151,9 +151,9 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
       }
     }
     $i18n = new CRM_Core_I18n($idioma);
-    $i18n->localizeArray($country, array(
+    $i18n->localizeArray($country, [
       'context' => 'country',
-    ));
+    ]);
     $i18n->setlocale($idioma);
 
     $css = '&lt;style type="text/css"&gt;'."\n" . '
@@ -184,7 +184,7 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
       return oscuridad;'."\n".'    }'."\n".'    var data = {'."\n".'      "areas" : {'."\n";
     foreach ($code as $cod => $co) {
       if ($cod != '') {
-        $data .= '        "'.$cod.'": { "value" : ' .$co.',"tooltip": {"content": "&lt;span style=\"font-weight:bold;\"&gt;'.$i18n->crm_translate($countryName[$cod], array('context' => 'country')).'&lt;/span&gt;';
+        $data .= '        "'.$cod.'": { "value" : ' .$co.',"tooltip": {"content": "&lt;span style=\"font-weight:bold;\"&gt;'.$i18n->crm_translate($countryName[$cod], ['context' => 'country']).'&lt;/span&gt;';
         if ($co != 0) {
           $data.='&lt;br/&gt; ' .number_format($co,0, '', '.').' '.$export['membership_name'].'"}},'."\n";
         } else {
@@ -231,7 +231,7 @@ class CRM_WorldMembershipChart_Form_Main extends CRM_Core_Form {
   }
 
   function lineargradient($ra,$ga,$ba,$rz,$gz,$bz,$iterationnr) {
-    $colorIndex = array();
+    $colorIndex = [];
     for ($iterationc=1; $iterationc<=$iterationnr; $iterationc++) {
       $iterationdiff = $iterationnr-$iterationc;
       $colorIndex[] = '#'.
