@@ -152,12 +152,12 @@ function worldmembershipchart_civicrm_preProcess($formName, &$form) {
  *
  **/
 function worldmembershipchart_civicrm_navigationMenu(&$menu) {
-  _worldmembershipchart_civix_insert_navigation_menu($menu, 'Memberships', array(
+  _worldmembershipchart_civix_insert_navigation_menu($menu, 'Memberships', [
     'label' => E::ts('World Membership Chart'),
     'name' => 'world_membership_chart',
     'url' => 'civicrm/admin/worldmembershipchart',
     'operator' => 'OR',
     'separator' => 2,
-  ));
+  ]);
   _worldmembershipchart_civix_navigationMenu($menu);
 } 
